@@ -1,19 +1,34 @@
 {% extends "_layouts/default.njk" %} {% block body %}
 <div class="content">
   <strong>Olá, {{ user.name }}</strong>
-  <p>Inicie um agendamento escolhendo um profissional abaixo:</p>
 
-  <ul class="providers">
-    {% for provider in providers %}
-    <li class="provider">
-      <div>
-        <img src="/files/{{ provider.avatar }}" alt="" />
-        <strong>{{ provider.name }}</strong>
-      </div>
-      <a href="/app/appointments/new/{{ provider.id }}">+</a>
-    </li>
-    {% endfor %}
-  </ul>
+  {% if user.provider %}
+    <p>Estes são seus horários de hoje:</p>
+    <ul class="providers">
+      {% for provider in providers %}
+        <li class="provider" style="{% if provider.disabled == true %} opacity: 0.5 {% endif %}">
+          <div>
+            <img src="/files/{{ provider.avatar }}" />
+            <strong>{{ provider.name }} <br> {{ provider.date }}</strong>
+          </div>
+        </li>
+      {% endfor %}
+    </ul>
+
+  {% else %}
+    <p>Inicie um agendamento escolhendo um profissional abaixo:</p>
+    <ul class="providers">
+      {% for provider in providers %}
+      <li class="provider">
+        <div>
+          <img src="/files/{{ provider.avatar }}" alt="" />
+          <strong>{{ provider.name }}</strong>
+        </div>
+        <a href="/app/appointments/new/{{ provider.id }}">+</a>
+      </li>
+      {% endfor %}
+    </ul>
+  {% endif %}
   <a href="/app/logout" class="logout">Sair</a>
 </div>
 {% endblock %}

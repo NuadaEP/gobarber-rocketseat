@@ -7,6 +7,7 @@ const routes = express.Router()
 // Middlewares
 const authMiddleware = require('./app/middlewares/auth')
 const guestMiddleware = require('./app/middlewares/guest')
+const providerMiddleware = require('./app/middlewares/provider')
 
 // Controllers
 const SessionController = require('./app/controllers/SessionController')
@@ -37,8 +38,16 @@ routes.get('/app/logout', SessionController.destroy)
 
 routes.get('/app/dashboard', DashboardController.index)
 
-routes.get('/app/appointments/new/:provider', AppointmentController.create)
-routes.post('/app/appointments/new/:provider', AppointmentController.store)
+routes.get(
+  '/app/appointments/new/:provider',
+  providerMiddleware,
+  AppointmentController.create
+)
+routes.post(
+  '/app/appointments/new/:provider',
+  providerMiddleware,
+  AppointmentController.store
+)
 
 routes.get('/app/available/:provider', AvailableController.index)
 
