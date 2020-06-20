@@ -18,7 +18,8 @@
     "sequelize": "^5.21.13"
   },
   "scripts": {
-    "start": "sequelize db:migrate && sequelize db:migrate && nodemon src/index.js"
+    "dev": "nodemon src/index.js",
+    "start": "npm install sequelize -g && sequelize db:migrate && node src/index.js"
   },
   "devDependencies": {
     "eslint": "^5.16.0",
