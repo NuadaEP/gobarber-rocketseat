@@ -1,9 +1,9 @@
 module.exports = {
-  dialect: "mysql",
-  host: "127.0.0.1",
-  username: "root",
-  password: "232204",
-  database: "gobarbernjn",
+  dialect: process.env.DIALECT,
+  host: process.env.HOST,
+  username: process.env.USERNAME,
+  password: process.env.PASSWORD,
+  database: process.env.DATABASE,
   operatorAlieses: false,
   define: {
     timestemps: true,
