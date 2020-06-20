@@ -4,6 +4,9 @@ const LokiStore = require('connect-loki')(session)
 const nunjucks = require('nunjucks')
 const path = require('path')
 const flash = require('connect-flash')
+const Dotenv = require('dotenv')
+
+Dotenv.config()
 
 class App {
   constructor () {
