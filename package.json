@@ -19,8 +19,8 @@
     "sequelize-cli": "^5.5.1"
   },
   "scripts": {
-    "dev": "nodemon src/index.js",
-    "start": "npm install sequelize -g && sequelize db:migrate && node src/index.js"
+    "start": "npm install sequelize -g && sequelize db:migrate && node src/index.js",
+    "dev": "nodemon src/index.js"
   },
   "devDependencies": {
     "eslint": "^5.16.0",
